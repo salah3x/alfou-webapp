@@ -1,0 +1,37 @@
+<mat-card fxLayout="column" fxLayoutAlign="space-around center">
+  <mat-card-header fxFlex="100">
+    <mat-card-title><h4 id="contact">Contactez-nous</h4></mat-card-title>
+  </mat-card-header>
+  <mat-card-content fxFlex>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <mat-form-field>
+        <input matInput name="name" ngModel placeholder="Nom & prénom" required>
+        <mat-icon matSuffix>person</mat-icon>
+        <mat-error>Ce champ est obligatoire</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input email matInput name="email" ngModel placeholder="Email" required>
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-error *ngIf="f.controls['email']?.hasError('required')">Ce champ est obligatoire</mat-error>
+        <mat-error *ngIf="f.controls['email']?.hasError('email')">Email doit être correct</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select name="service" ngModel placeholder="Service" required>
+          <mat-option *ngFor="let option of options" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-select>
+        <mat-error>Ce champ est obligatoire</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea matInput name="comment" ngModel placeholder="Commentaire" required rows="5"></textarea>
+        <mat-error>Ce champ est obligatoire</mat-error>
+      </mat-form-field>
+
+      <button [disabled]="!f.valid" color="primary" mat-raised-button type="submit">Envoyer</button>
+    </form>
+  </mat-card-content>
+</mat-card>

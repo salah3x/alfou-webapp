@@ -1,0 +1,20 @@
+form {
+  width: 100%;
+  max-width: 800px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+button {
+  width: 100%;
+}
+
+mat-card {
+  background-image: url("https://i1.wp.com/www.dcrstrategies.com/wp-content/uploads/2016/04/blurred-image-7588-7881-hd-wallpapers.jpg");
+}
+
+mat-card-title {
+  color: darkslateblue;
+}
