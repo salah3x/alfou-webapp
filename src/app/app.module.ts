@@ -14,12 +14,14 @@ import {ContactComponent} from './home/contact/contact.component';
 import {environment} from '../environments/environment';
 import {AuthGuard} from './Auth-guard.service';
 import {AngularFireAuthModule} from '@angular/fire/auth';
+import {SigninComponent} from './home/signin/signin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ContactComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +35,7 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
     AngularFireAuthModule
   ],
   providers: [AuthGuard],
+  entryComponents: [SigninComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,7 +6,7 @@ import {AuthGuard} from './Auth-guard.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
-  {path: 'inbox', loadChildren: './inbox/inbox.module#InboxModule', canLoad: [AuthGuard]},
+  {path: 'inbox', loadChildren: './inbox/inbox.module#InboxModule', canLoad: [AuthGuard], canActivate: [AuthGuard]},
   { path: '**', redirectTo: ''}
 ];
 
