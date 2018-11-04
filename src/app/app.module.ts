@@ -12,24 +12,27 @@ import {AppMaterialModule} from './app-material.module';
 import {HomeComponent} from './home/home.component';
 import {ContactComponent} from './home/contact/contact.component';
 import {environment} from '../environments/environment';
+import {AuthGuard} from './Auth-guard.service';
+import {AngularFireAuthModule} from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ContactComponent
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppMaterialModule,
     FlexLayoutModule,
-    AppRoutingModule,
     FormsModule,
+    AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
