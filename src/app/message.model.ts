@@ -3,4 +3,5 @@ interface Message {
   email: string;
   service: string;
   comment: string;
+  date: Date;
 }

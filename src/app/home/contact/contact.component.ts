@@ -17,12 +17,14 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.options.push('Option1');
-    this.options.push('Option2');
+    this.options.push('Sécurité');
+    this.options.push('Gardiennage');
+    this.options.push('Nettoyage');
   }
 
   onSubmit(f: NgForm) {
     const obj: Message = f.control.value;
+    obj.date = new Date();
     this.messagesRef.add(obj).then(value => {
       this.snackBar.open('Message envoyé avec succes.', 'Fermer', {duration: 3000});
       f.resetForm();
