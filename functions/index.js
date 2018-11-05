@@ -14,7 +14,7 @@ exports.inbox = functions.https.onRequest((request, response) => {
 /**
  * This function listen to any new messages get inserted to the database and send it through email
  */
-exports.send = functions.firestore.document('/messages').onCreate((snapshot, context) => {
+exports.send = functions.firestore.document('/messages/{messageId}').onCreate((snapshot, context) => {
   console.log('New message inserted');
   console.log(snapshot);
   console.log(context);
