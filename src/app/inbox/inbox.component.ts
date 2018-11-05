@@ -12,7 +12,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 export class InboxComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
-              private router: Router,
+              public router: Router,
               private dialog: MatDialog,
               private auth: AngularFireAuth) { }
 

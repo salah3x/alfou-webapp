@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   isAuthenticated: boolean;
 
   constructor(private dialog: MatDialog,
-              private auth: AngularFireAuth,
+              public auth: AngularFireAuth,
               private snackBar: MatSnackBar) { }
 
   ngOnInit() {
