@@ -40,3 +40,4 @@ Thumbs.db
 
 # Firebase cache
 .firebase
+functions/node_modules

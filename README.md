@@ -2,12 +2,16 @@
 
 This project is an advertisement website for **Alfou-Security** and an email application to answer customers' questions.
 
-### Development server
+### Development server (angular cli)
 
 - First clone the repo: `git clone git@github.com:salah3x/alfou-webapp.git` 
 - Install dependencies (assuming `node`, `npm` and `ng` are already installed): `cd alfou-webapp && npm install`
 - Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+### Development server (firebase cli)
+
+- Serve the hosting plan (content of dist/alfou-webapp) locally: `firebase serve --only hosting`
+- Serve the cloud functions in a local server: `firebase serve --only functions[:function_name]`
 
 ### Code scaffolding
 
@@ -30,8 +34,8 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 - First install firebase tools: `npm install -g firebase-tools`
 - Access your Firebase projects: `firebase login`
 - Initialize your site (choose the dist/alfou-webapp folder): `firebase init`
-- Build the project for production: `ng build --prod`
-- Deploy your site: `firebase deploy`
+- Deploy your site: `firebase deploy [--only hosting | functions]`
+(This will build your project an deploy it plus deploying the cloud functions)
 - Visit [alfou-5b922.firebaseapp.com](http://alfou-5b922.firebaseapp.com/)
 
 #
