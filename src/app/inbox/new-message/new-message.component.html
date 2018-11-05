@@ -1,0 +1,23 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <mat-dialog-content class="new-message-content">
+    <mat-form-field>
+      <input email matInput name="email" ngModel placeholder="A" required/>
+      <mat-icon matSuffix>email</mat-icon>
+      <mat-error *ngIf="f.controls['email']?.hasError('required')">Ce champ est obligatoire</mat-error>
+      <mat-error *ngIf="f.controls['email']?.hasError('email')">Email doit être correct</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="subject" ngModel placeholder="Sujet" required/>
+      <mat-error>Ce champ est obligatoire</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput name="body" ngModel placeholder="Contenu" rows="10"></textarea>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-dialog-close mat-raised-button>Annuler</button>
+    <button [disabled]="!f.valid" color="primary" mat-raised-button>Envoyé</button>
+    <mat-progress-spinner *ngIf="loading" [diameter]="30" mode="indeterminate"></mat-progress-spinner>
+  </mat-dialog-actions>
+
+</form>

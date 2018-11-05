@@ -1,3 +1,57 @@
-<p>
-  inbox works!
-</p>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" opened>
+    <mat-nav-list>
+      <mat-list-item routerLinkActive="active">
+        <a matLine routerLink="./a">Inbox</a>
+        <button mat-icon-button>
+          <mat-icon>inbox</mat-icon>
+        </button>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item routerLinkActive="active">
+        <a matLine routerLink="./done">Vue</a>
+        <button mat-icon-button>
+          <mat-icon>done_all</mat-icon>
+        </button>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item routerLinkActive="active">
+        <a matLine routerLink="./sent">Envoyé</a>
+        <button mat-icon-button>
+          <mat-icon>send</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <div>
+        <button (click)="sidenav.toggle()" class="menu-btn" mat-icon-button type="button">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      <div (click)="router.navigate(['inbox'])" class="brand">
+        Messagerie
+      </div>
+      <span class="fill-remaining-space"></span>
+      <mat-menu #appMenu="matMenu">
+        <button (click)="onSignOut()" mat-menu-item>Se déconnecter</button>
+      </mat-menu>
+      <button [matMenuTriggerFor]="appMenu" color="default" mat-mini-fab>
+        <mat-icon>person</mat-icon>
+      </button>
+    </mat-toolbar>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+    <button
+      (click)="onNewMessage()"
+      class="new-fab"
+      color="accent"
+      mat-fab
+      matTooltip="Nouveau message"
+      matTooltipPosition="before">
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-sidenav-content>
+</mat-sidenav-container>
