@@ -17,6 +17,8 @@ button {
 
 mat-card {
   background-color: transparent;
+  margin-bottom: 20px;
+  margin-top: 20px;
   }
 
 .contact-info {
