@@ -1,5 +1,5 @@
 <mat-sidenav-container>
-  <mat-sidenav #sidenav mode="side" opened>
+  <mat-sidenav #sidenav mode="over">
     <mat-nav-list>
       <mat-list-item routerLinkActive="active">
         <a matLine routerLink="./a">Inbox</a>
@@ -36,6 +36,7 @@
       <span class="fill-remaining-space"></span>
       <mat-menu #appMenu="matMenu">
         <button (click)="onSignOut()" mat-menu-item>Se déconnecter</button>
+        <a routerLink='/' mat-menu-item>Quitter</a>
       </mat-menu>
       <button [matMenuTriggerFor]="appMenu" color="default" mat-mini-fab>
         <mat-icon>person</mat-icon>

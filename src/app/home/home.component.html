@@ -1,4 +1,17 @@
-<p>
-  home works!
-</p>
+<mat-toolbar color="primary">
+  <a mat-raised-button routerLink="/inbox" *ngIf="isAuthenticated">Messagerie</a>
+  <div class="fill-remaining-space"></div>
+  <p fxHide.lt-sm >{{ (auth.user |async)?.email }}</p>
+  <div class="fill-remaining-space"></div>
+  <button mat-raised-button (click)="onSigninOrSignout()">
+    {{ isAuthenticated ? 'Se déconnecter': 'Se connecter' }}
+  </button>
+</mat-toolbar>
+
 <app-contact></app-contact>
+
+<mat-toolbar color="primary">
+    <div class="fill-remaining-space"></div>
+    <p>Copyright © Alfou-securite 2018</p>
+    <div class="fill-remaining-space"></div>
+  </mat-toolbar>
