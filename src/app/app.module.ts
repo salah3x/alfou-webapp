@@ -15,13 +15,19 @@ import {environment} from '../environments/environment';
 import {AuthGuard} from './Auth-guard.service';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {SigninComponent} from './home/signin/signin.component';
+import { HeaderComponent } from './home/header/header.component';
+import { NavComponent } from './home/nav/nav.component';
+import { MainComponent } from './home/main/main.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ContactComponent,
-    SigninComponent
+    SigninComponent,
+    HeaderComponent,
+    NavComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
