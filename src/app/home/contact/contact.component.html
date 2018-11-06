@@ -16,7 +16,7 @@
 
         <mat-form-field>
           <input email matInput name="email" ngModel placeholder="Email" required>
-          <mat-icon matSuffix>email</mat-icon>
+          <mat-icon matSuffix>alternate_email</mat-icon>
           <mat-error *ngIf="f.controls['email']?.hasError('required')">Ce champ est obligatoire</mat-error>
           <mat-error *ngIf="f.controls['email']?.hasError('email')">Email doit être correct</mat-error>
         </mat-form-field>

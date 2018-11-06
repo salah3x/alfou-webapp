@@ -27,7 +27,6 @@ export class InboxComponent implements OnInit {
 
 
   onSignOut() {
-    this.router.navigate(['']);
-    this.auth.auth.signOut();
+    this.auth.auth.signOut().then(() => this.router.navigate(['']));
   }
 }
