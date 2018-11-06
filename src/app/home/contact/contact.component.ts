@@ -11,6 +11,7 @@ import {MatSnackBar} from '@angular/material';
 export class ContactComponent implements OnInit {
   options: string[] = [];
   messagesRef: AngularFirestoreCollection<Message>;
+  loading = false;
 
   constructor(db: AngularFirestore, private snackBar: MatSnackBar) {
     this.messagesRef = db.collection('messages');
@@ -23,13 +24,16 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmit(f: NgForm) {
+    this.loading = true;
     const obj: Message = f.control.value;
     obj.date = new Date();
     this.messagesRef.add(obj).then(value => {
       this.snackBar.open('Message envoyé avec succes.', 'Fermer', {duration: 3000});
       f.resetForm();
+      this.loading = false;
     }).catch(reason => {
       this.snackBar.open('Echec d\'envoie du message, veuillez réessayer.', 'Fermer', {duration: 3000});
+      this.loading = false;
     });
   }
 }

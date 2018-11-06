@@ -1,37 +1,53 @@
-<mat-card fxLayout="column" fxLayoutAlign="space-around center">
-  <mat-card-header fxFlex="100">
-    <mat-card-title><h4 id="contact">Contactez-nous</h4></mat-card-title>
-  </mat-card-header>
-  <mat-card-content fxFlex>
-    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-      <mat-form-field>
-        <input matInput name="name" ngModel placeholder="Nom & prénom" required>
-        <mat-icon matSuffix>person</mat-icon>
-        <mat-error>Ce champ est obligatoire</mat-error>
-      </mat-form-field>
+<div fxLayout fxLayout.lt-sm="column" fxLayoutAlign="space-around center" class="contact-div">
+  <mat-card fxLayout="column" fxFlex="60" fxLayoutAlign="space-around center">
+    <mat-card-header fxFlex="100">
+      <mat-card-title fxLayout fxLayoutAlign="center center">
+        <h4>Envoyez-nous un méssage</h4>
+        <mat-progress-spinner *ngIf="loading" [diameter]="30" mode="indeterminate"></mat-progress-spinner>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxFlex>
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <mat-form-field>
+          <input matInput name="name" ngModel placeholder="Nom & prénom" required>
+          <mat-icon matSuffix>person</mat-icon>
+          <mat-error>Ce champ est obligatoire</mat-error>
+        </mat-form-field>
 
-      <mat-form-field>
-        <input email matInput name="email" ngModel placeholder="Email" required>
-        <mat-icon matSuffix>email</mat-icon>
-        <mat-error *ngIf="f.controls['email']?.hasError('required')">Ce champ est obligatoire</mat-error>
-        <mat-error *ngIf="f.controls['email']?.hasError('email')">Email doit être correct</mat-error>
-      </mat-form-field>
+        <mat-form-field>
+          <input email matInput name="email" ngModel placeholder="Email" required>
+          <mat-icon matSuffix>email</mat-icon>
+          <mat-error *ngIf="f.controls['email']?.hasError('required')">Ce champ est obligatoire</mat-error>
+          <mat-error *ngIf="f.controls['email']?.hasError('email')">Email doit être correct</mat-error>
+        </mat-form-field>
 
-      <mat-form-field>
-        <mat-select name="service" ngModel placeholder="Service" required>
-          <mat-option *ngFor="let option of options" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-select>
-        <mat-error>Ce champ est obligatoire</mat-error>
-      </mat-form-field>
+        <mat-form-field>
+          <mat-select name="service" ngModel placeholder="Service" required>
+            <mat-option *ngFor="let option of options" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Ce champ est obligatoire</mat-error>
+        </mat-form-field>
 
-      <mat-form-field>
-        <textarea matInput name="comment" ngModel placeholder="Commentaire" required rows="5"></textarea>
-        <mat-error>Ce champ est obligatoire</mat-error>
-      </mat-form-field>
+        <mat-form-field>
+          <textarea matInput name="comment" ngModel placeholder="Votre message" required rows="5"></textarea>
+          <mat-error>Ce champ est obligatoire</mat-error>
+        </mat-form-field>
 
-      <button [disabled]="!f.valid" color="primary" mat-raised-button type="submit">Envoyer</button>
-    </form>
-  </mat-card-content>
-</mat-card>
+        <button [disabled]="!f.valid" color="primary" mat-raised-button type="submit">Envoyer</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <div fxFlex="30" fxLayout="column" fxLayoutAlign="space-around center">
+    <h4 fxflex color="primary">Contactez-nous</h4>
+    <div fxflex class="contact-info">
+      <p fxLayout="row" fxLayoutAlign="center center"><mat-icon color="primary">work_outline</mat-icon>ALFOU-SECURITE SARL</p>
+      <p fxLayout="row" fxLayoutAlign="center center"><mat-icon color="primary">location_on</mat-icon>Siège sicial : Groupe Atakadoum, GH 2-17, Etage 2, Sidi Bernoussi - Casablanca.</p>
+      <p fxLayout="row" fxLayoutAlign="center center"><mat-icon color="primary">info_outline</mat-icon>R.C: 264887 - Patente : 37957804 - I.F: 14462298 - CNSS: 4575273</p>
+      <p fxLayout="row" fxLayoutAlign="center center"><mat-icon color="primary">phone</mat-icon>Tél. : +(212) 05 22 75 11 32 / Fax. : +(212) 05 22 75 11 33 / GSM : +(212) 06 61 97 87 98</p>
+      <p fxLayout="row" fxLayoutAlign="center center"><mat-icon color="primary">alternate_email</mat-icon>Email : info@alfou-secunet.com</p>
+    </div>
+  </div>
+</div>
