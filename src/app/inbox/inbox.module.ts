@@ -8,7 +8,8 @@ import {DoneComponent} from './done/done.component';
 import {NewMessageComponent} from './new-message/new-message.component';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {MessageComponent} from './message/message.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     InboxHomeComponent,
     SentComponent,
     DoneComponent,
-    NewMessageComponent
+    NewMessageComponent,
+    MessageComponent
   ],
   imports: [
     InboxRoutingModule,

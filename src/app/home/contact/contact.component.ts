@@ -25,8 +25,14 @@ export class ContactComponent implements OnInit {
 
   onSubmit(f: NgForm) {
     this.loading = true;
-    const obj: Message = f.control.value;
-    obj.date = new Date();
+    const obj: Message = {
+      name: f.value.name,
+      from: f.value.email,
+      subject: f.value.service,
+      body: f.value.comment,
+      date: new Date(),
+      done: false
+    };
     this.messagesRef.add(obj).then(value => {
       this.snackBar.open('Message envoyé avec succes.', 'Fermer', {duration: 3000});
       f.resetForm();
