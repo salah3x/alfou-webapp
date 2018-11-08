@@ -1,0 +1,67 @@
+<mat-card>
+  <mat-expansion-panel (opened)="opened = true; viewed = true" (closed)="opened = false" hideToggle="true">
+    <mat-expansion-panel-header>
+      <div
+        class="message-toolbar"
+        fxLayoutAlign="start center"
+        fxLayout="row">
+        <div fxFlex="50px" [fxShow]="!opened">
+              <span class="avatar">
+                {{message.name.slice(0, 1)}}
+              </span>
+        </div>
+        <div fxFlex="20%" [fxShow]="!opened">
+          <strong>{{message.name}}</strong>
+        </div>
+        <div fxFlex fxFill class="message-subject">
+          {{message.subject}}
+        </div>
+        <div fxFlex="20%" class="btn-col">{{ getDate(message.date) }}</div>
+        <div fxFlex="5%" class="btn-col" [ngSwitch]="message.service">
+          <mat-icon *ngSwitchCase="'Sécurité'" title="Sécurité" color="primary">security</mat-icon>
+          <mat-icon *ngSwitchCase="'Gardiennage'" title="Gardiennage" color="primary">local_florist</mat-icon>
+          <mat-icon *ngSwitchCase="'Nettoyage'" title="Nettoyage" color="primary">brush</mat-icon>
+        </div>
+        <div fxFlex="5%" class="btn-col">
+          <mat-icon [title]="message.new? 'Nouveau': ''" color="accent">{{message.done ? 'done_all': message.new ? 'new_releases': ''}}</mat-icon>
+        </div>
+      </div>
+    </mat-expansion-panel-header>
+    <div class="message-body" fxLayout="row">
+      <div fxFlex="50px">
+              <span class="avatar large">
+                {{message.name.slice(0, 1)}}
+              </span>
+      </div>
+      <div fxFlex>
+        <div class="message-body-toolbar">
+          <span class="message-from">{{message.name}}</span>
+          <span class="message-to"> ({{message.from}}) à moi</span>
+          <button mat-icon-button class="message-more" [matMenuTriggerFor]="menu" *ngIf="!message.done && message.id">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu class="message-more-menu" #menu="matMenu" [overlapTrigger]="false" xPosition="before">
+            <button mat-menu-item (click)="onReply()">
+              <mat-icon>reply</mat-icon>
+              Repondre
+            </button>
+            <button mat-menu-item (click)="onDone()">
+              <mat-icon>done_all</mat-icon>
+              Vue
+            </button>
+          </mat-menu>
+        </div>
+        <div [innerHTML]="message.body"></div>
+        <br>
+        <div *ngFor="let reply of message.replies">
+          <mat-divider></mat-divider>
+          <div fxLayout fxLayoutAlign="center center">
+            <strong fxFlex="30">{{reply.me? 'moi': message.name}}</strong>
+            <div fxFlex fxFill class="reply" [innerHtml]="reply.body"></div>
+            <p fxFlex="30" class="btn-col">{{getDate(reply.date)}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-card>

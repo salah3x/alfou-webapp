@@ -1,18 +1,18 @@
 <form #f="ngForm" (ngSubmit)="onSubmit(f)">
   <mat-dialog-content class="new-message-content">
     <mat-form-field>
-      <input email matInput name="email" ngModel placeholder="A" required/>
+      <input email matInput name="email" [ngModel]="message?.from" placeholder="A" [readonly]="message" required/>
       <mat-icon matSuffix>alternate_email</mat-icon>
       <mat-error *ngIf="f.controls['email']?.hasError('required')">Ce champ est obligatoire</mat-error>
       <mat-error *ngIf="f.controls['email']?.hasError('email')">Email doit être correct</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput name="subject" ngModel placeholder="Sujet" required/>
+      <input matInput name="subject" [ngModel]="message?.subject" [readonly]="message" placeholder="Sujet" required/>
       <mat-icon matSuffix>subject</mat-icon>
       <mat-error>Ce champ est obligatoire</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <textarea matInput name="body" ngModel placeholder="Contenu" rows="10"></textarea>
+      <textarea matInput name="body" ngModel placeholder="Message" rows="10"></textarea>
     </mat-form-field>
   </mat-dialog-content>
   <mat-dialog-actions>
@@ -20,5 +20,4 @@
     <button [disabled]="!f.valid" color="primary" mat-raised-button>Envoyé</button>
     <mat-progress-spinner *ngIf="loading" [diameter]="30" mode="indeterminate"></mat-progress-spinner>
   </mat-dialog-actions>
-
 </form>

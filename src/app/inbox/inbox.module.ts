@@ -10,6 +10,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MessageComponent} from './message/message.component';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {MessageComponent} from './message/message.component';
     AppMaterialModule,
     CommonModule,
     FormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AngularFirestoreModule
   ],
   entryComponents: [NewMessageComponent]
 })

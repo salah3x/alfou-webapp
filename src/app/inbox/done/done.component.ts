@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {AngularFirestore} from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-done',
@@ -7,9 +8,20 @@ import {Component, OnInit} from '@angular/core';
 })
 export class DoneComponent implements OnInit {
 
-  constructor() { }
+  messages: Message[];
+  loading = false;
+
+  constructor(private store: AngularFirestore) { }
 
   ngOnInit() {
+    this.loading = true;
+    this.store.collection<Message>('messages', ref =>
+      ref.where('done', '==', true)
+        .orderBy('date', 'desc')
+    ).valueChanges().subscribe(value => {
+        this.loading = false;
+        this.messages = value;
+    });
   }
 
 }

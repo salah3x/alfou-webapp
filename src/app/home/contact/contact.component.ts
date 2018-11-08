@@ -28,8 +28,12 @@ export class ContactComponent implements OnInit {
     const obj: Message = {
       name: f.value.name,
       from: f.value.email,
-      subject: f.value.service,
+      subject: f.value.subject,
+      service: f.value.service,
+      // todo change \n to <br>
       body: f.value.comment,
+      new: true,
+      // todo get date from server
       date: new Date(),
       done: false
     };

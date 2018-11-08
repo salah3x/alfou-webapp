@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-sent',
@@ -7,9 +9,23 @@ import {Component, OnInit} from '@angular/core';
 })
 export class SentComponent implements OnInit {
 
-  constructor() { }
+  messages: Message[];
+  loading = false;
+
+  constructor(private store: AngularFirestore) { }
 
   ngOnInit() {
+    this.loading = true;
+    this.store.collection<Email>('emails', ref =>
+      ref.orderBy('date', 'desc')
+    ).valueChanges().pipe(
+      map((value: Email[]) =>
+        value.map((e: Email) =>
+          ({name: e.to, from: e.to, subject: e.subject, body: e.body, date: e.date, done: e.delivered} as Message)))
+    ).subscribe(value => {
+      this.loading = false;
+      this.messages = value;
+    });
   }
 
 }
