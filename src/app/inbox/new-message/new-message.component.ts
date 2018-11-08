@@ -34,7 +34,7 @@ export class NewMessageComponent implements OnInit {
         this.snackBar.open('Réponse envoyé avec succés.', 'Fermer', {duration: 3000});
         this.dialogRef.close();
       }).catch(() => {
-        this.snackBar.open('Envoie de la réponse a échoué.', 'Fermer', {duration: 3000})
+        this.snackBar.open('Envoie de la réponse a échoué.', 'Fermer', {duration: 3000});
         this.loading = false;
       });
     } else {
@@ -51,7 +51,7 @@ export class NewMessageComponent implements OnInit {
         this.snackBar.open('Message envoyé avec succés.', 'Fermer', {duration: 3000});
         this.dialogRef.close();
       }).catch(() => {
-        this.snackBar.open('Envoie du message a échoué.', 'Fermer', {duration: 3000})
+        this.snackBar.open('Envoie du message a échoué.', 'Fermer', {duration: 3000});
         this.loading = false;
       });
     }

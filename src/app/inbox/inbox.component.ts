@@ -14,7 +14,7 @@ export class InboxComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               public router: Router,
               private dialog: MatDialog,
-              private auth: AngularFireAuth) { }
+              public auth: AngularFireAuth) { }
 
   ngOnInit() {
   }
