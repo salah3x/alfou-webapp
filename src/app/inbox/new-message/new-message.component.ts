@@ -26,10 +26,8 @@ export class NewMessageComponent implements OnInit {
         this.message.replies = [];
       }
       // todo get date from server
-      const copy = {...this.message};
-      delete copy.id;
       this.message.replies.push({body: f.value.body, date: new Date(), me: true});
-      this.store.collection('/messages').doc(this.message.id).set(copy).then(() => {
+      this.store.collection('/messages').doc(this.message.id).update({replies: this.message.replies}).then(() => {
         this.loading = false;
         this.snackBar.open('Réponse envoyé avec succés.', 'Fermer', {duration: 3000});
         this.dialogRef.close();
@@ -43,6 +41,7 @@ export class NewMessageComponent implements OnInit {
         subject: f.value.subject,
         // todo replace \n with <br>
         body: f.value.body,
+        // todo get date from server
         date: new Date(),
         delivered: false
       };
