@@ -1,6 +1,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {MatDialog, MatSnackBar} from '@angular/material';
+import {DomSanitizer} from '@angular/platform-browser';
 import {NewMessageComponent} from '../new-message/new-message.component';
 import {MessageWithId} from '../../message.model';
 
@@ -17,7 +18,8 @@ export class MessageComponent implements OnInit, OnDestroy {
 
   constructor(private store: AngularFirestore,
               private dialog: MatDialog,
-              private snackBar: MatSnackBar) { }
+              private snackBar: MatSnackBar,
+              private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
   }
@@ -50,6 +52,10 @@ export class MessageComponent implements OnInit, OnDestroy {
     }
     return date.getDay() + '/' + date.getMonth() + '/' +
       date.getFullYear() + ' ' + hour + ':' + min;
+  }
+
+  getHtml(body: string) {
+    return this.sanitizer.bypassSecurityTrustHtml(body.replace(/\n/g, '<br>'));
   }
 
   ngOnDestroy(): void {
