@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {map} from 'rxjs/operators';
+import {Email, Message} from '../../message.model';
 
 @Component({
   selector: 'app-sent',

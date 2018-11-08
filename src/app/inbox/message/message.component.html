@@ -51,13 +51,13 @@
             </button>
           </mat-menu>
         </div>
-        <div [innerHTML]="message.body"></div>
+        <div [innerHTML]="message.body.replace('\n','<br>')"></div>
         <br>
         <div *ngFor="let reply of message.replies">
           <mat-divider></mat-divider>
           <div fxLayout fxLayoutAlign="center center">
             <strong fxFlex="30">{{reply.me? 'moi': message.name}}</strong>
-            <div fxFlex fxFill class="reply" [innerHtml]="reply.body"></div>
+            <div fxFlex fxFill class="reply" [innerHtml]="reply.body.replace('\n','<br>')"></div>
             <p fxFlex="30" class="btn-col">{{getDate(reply.date)}}</p>
           </div>
         </div>

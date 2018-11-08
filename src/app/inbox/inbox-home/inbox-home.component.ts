@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {map} from 'rxjs/operators';
+import {Message, MessageWithId} from '../../message.model';
 
 @Component({
   selector: 'app-inbox-home',

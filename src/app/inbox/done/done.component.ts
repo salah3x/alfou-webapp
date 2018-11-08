@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
+import {Message} from '../../message.model';
 
 @Component({
   selector: 'app-done',

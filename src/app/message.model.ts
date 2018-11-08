@@ -1,4 +1,4 @@
-interface Message {
+export interface Message {
   name: string;
   from: string;
   subject: string;
@@ -10,11 +10,11 @@ interface Message {
   replies?: {me: boolean, body: string, date: Date} [];
 }
 
-interface MessageWithId extends Message {
+export interface MessageWithId extends Message {
   id: string;
 }
 
-interface Email {
+export interface Email {
   to: string;
   subject: string;
   body: string;

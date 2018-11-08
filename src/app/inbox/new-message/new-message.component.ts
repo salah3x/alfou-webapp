@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef, MatSnackBar} from '@angular/material';
 import {AngularFirestore} from '@angular/fire/firestore';
+import {Email, MessageWithId} from '../../message.model';
 
 @Component({
   selector: 'app-new-message',
@@ -25,7 +26,6 @@ export class NewMessageComponent implements OnInit {
       if (!this.message.replies) {
         this.message.replies = [];
       }
-      // todo get date from server
       this.message.replies.push({body: f.value.body, date: new Date(), me: true});
       this.store.collection('/messages').doc(this.message.id).update({replies: this.message.replies}).then(() => {
         this.loading = false;
@@ -39,9 +39,7 @@ export class NewMessageComponent implements OnInit {
       const email: Email = {
         to: f.value.email,
         subject: f.value.subject,
-        // todo replace \n with <br>
         body: f.value.body,
-        // todo get date from server
         date: new Date(),
         delivered: false
       };

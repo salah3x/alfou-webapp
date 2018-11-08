@@ -2,6 +2,7 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {MatDialog, MatSnackBar} from '@angular/material';
 import {NewMessageComponent} from '../new-message/new-message.component';
+import {MessageWithId} from '../../message.model';
 
 @Component({
   selector: 'app-message',
