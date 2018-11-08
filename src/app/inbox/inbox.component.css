@@ -1,5 +1,5 @@
 .new-fab.mat-fab {
-  position: absolute;
+  position: fixed;
   right: 25px;
   bottom: 25px;
 }
@@ -28,4 +28,20 @@ mat-sidenav-content {
 p {
   font-size: 14px;
   margin-left: 10px;
+}
+
+.toolbar{
+  position: fixed;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.content {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.menu-btn{
+  margin-right: 10px;
 }

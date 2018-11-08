@@ -6,7 +6,8 @@ import {
   MatInputModule,
   MatListModule,
   MatSidenavModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatTooltipModule
 } from '@angular/material';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
@@ -29,7 +30,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatListModule,
     MatToolbarModule,
     MatMenuModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTooltipModule
   ],
   exports: [
     MatInputModule,
@@ -44,7 +46,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatListModule,
     MatToolbarModule,
     MatMenuModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTooltipModule
   ],
 })
 export class AppMaterialModule { }

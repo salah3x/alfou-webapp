@@ -18,12 +18,12 @@
         </div>
         <div fxFlex="20%" class="btn-col">{{ getDate(message.date) }}</div>
         <div fxFlex="5%" class="btn-col" [ngSwitch]="message.service">
-          <mat-icon *ngSwitchCase="'Sécurité'" title="Sécurité" color="primary">security</mat-icon>
-          <mat-icon *ngSwitchCase="'Gardiennage'" title="Gardiennage" color="primary">local_florist</mat-icon>
-          <mat-icon *ngSwitchCase="'Nettoyage'" title="Nettoyage" color="primary">brush</mat-icon>
+          <mat-icon *ngSwitchCase="'Sécurité'" matTooltip="Sécurité" color="primary">security</mat-icon>
+          <mat-icon *ngSwitchCase="'Gardiennage'" matTooltip="Gardiennage" color="primary">local_florist</mat-icon>
+          <mat-icon *ngSwitchCase="'Nettoyage'" matTooltip="Nettoyage" color="primary">brush</mat-icon>
         </div>
         <div fxFlex="5%" class="btn-col">
-          <mat-icon [title]="message.new? 'Nouveau': ''" color="accent">{{message.done ? 'done_all': message.new ? 'new_releases': ''}}</mat-icon>
+          <mat-icon [matTooltip]="message.new? 'Nouveau': ''" color="accent">{{message.done ? 'done_all': message.new ? 'new_releases': ''}}</mat-icon>
         </div>
       </div>
     </mat-expansion-panel-header>

@@ -24,7 +24,7 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar color="primary" class="toolbar">
       <div>
         <button (click)="sidenav.toggle()" class="menu-btn" mat-icon-button type="button">
           <mat-icon>menu</mat-icon>
@@ -39,11 +39,11 @@
         <button (click)="onSignOut()" mat-menu-item>Se déconnecter</button>
         <a routerLink='/' mat-menu-item>Quitter</a>
       </mat-menu>
-      <button [matMenuTriggerFor]="appMenu" color="default" mat-mini-fab>
+      <button [matMenuTriggerFor]="appMenu" class="menu-btn" [matTooltip]="(auth.user |async)?.email" color="default" mat-mini-fab>
         <mat-icon>person</mat-icon>
       </button>
     </mat-toolbar>
-    <div>
+    <div class="content">
       <router-outlet></router-outlet>
     </div>
     <button
