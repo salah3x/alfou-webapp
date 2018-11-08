@@ -5,31 +5,45 @@ sgMail.setApiKey('SG.kkDGAhI8TiCa7OpG2WXdZg.PNhWilOfsFi-gzeVXFs3dsne2G6e4TmgL-gX
 /**
  * This endpoint get triggered whenever a new message arrived in the mail box.
  * It stores the message in the database as a new message or as a reply to
- * an ongoing conversation depending on the title (if it contains the conversation number)
+ * an ongoing conversation depending on the subject (if it contains the conversation number)
  */
-exports.inbox = functions.https.onRequest((request, response) => {
+exports.onMessageArrived = functions.https.onRequest((request, response) => {
   console.log('Message received');
-  console.log(request);
+  console.log(request.body);
   response.send('OK');
 });
 
 /**
- * This function listen to any new messages get inserted to the database and send it through email
+ * This function listen to any new email get inserted to the database and send them
  */
-exports.send = functions.firestore.document('/messages/{messageId}').onCreate((snapshot, context) => {
-  console.log('New message inserted');
-  console.log(snapshot);
-  console.log(context);
-  response.send('OK');
+exports.onNewEmail = functions.firestore.document('/emails/{id}').onCreate((snapshot, context) => {
+  sendEmail(snapshot.data().to, snapshot.data().subject, snapshot.data().body);
 });
 
-/*
-const msg = {
-  from: 'salah@local.com',
-  to: 'salah.loukili@gmail.com',
-  subject: 'Sending with SendGrid is Fun',
-  text: 'and easy to do anywhere, even with Node.js',
-  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-};
-sgMail.send(msg);
-*/
+/**
+ * This function listen to any new replies get inserted to the database by the app and send them
+ */
+exports.onNewReply = functions.firestore.document('/messages/{id}').onUpdate((change, context) => {
+  const message = change.after.data();
+  if (!message.replies || message.replies.length === change.before.data().replies.length) {
+    return null;
+  }
+  const reply = message.replies.pop();
+  if (reply.me) {
+    sendEmail(message.from, `[ID#${change.after.id}] - ${message.subject}`, reply.body);
+  }
+  return null;
+});
+
+function sendEmail(to, subject, body) {
+  const msg = {
+    from: 'info@alfou-secunet.com',
+    to: to,
+    subject: subject,
+    // text: body,
+    html: body,
+  };
+  // sgMail.send(msg);
+  console.log('Sending email ...');
+  console.log(msg);
+}
