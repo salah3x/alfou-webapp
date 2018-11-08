@@ -18,6 +18,7 @@ exports.onMessageArrived = functions.https.onRequest((request, response) => {
  */
 exports.onNewEmail = functions.firestore.document('/emails/{id}').onCreate((snapshot, context) => {
   sendEmail(snapshot.data().to, snapshot.data().subject, snapshot.data().body);
+  return null;
 });
 
 /**
@@ -25,12 +26,11 @@ exports.onNewEmail = functions.firestore.document('/emails/{id}').onCreate((snap
  */
 exports.onNewReply = functions.firestore.document('/messages/{id}').onUpdate((change, context) => {
   const message = change.after.data();
-  if (!message.replies || message.replies.length === change.before.data().replies.length) {
-    return null;
-  }
-  const reply = message.replies.pop();
-  if (reply.me) {
-    sendEmail(message.from, `[ID#${change.after.id}] - ${message.subject}`, reply.body);
+  if (message.replies !== change.before.data().replies) {
+    const reply = message.replies.pop();
+    if (reply.me) {
+      sendEmail(message.from, `[ID#${change.after.id}] ${message.subject}`, reply.body);
+    }
   }
   return null;
 });
@@ -43,7 +43,6 @@ function sendEmail(to, subject, body) {
     // text: body,
     html: body,
   };
-  // sgMail.send(msg);
-  console.log('Sending email ...');
-  console.log(msg);
+  sgMail.send(msg);
+  console.log('Email sent :' + msg);
 }
