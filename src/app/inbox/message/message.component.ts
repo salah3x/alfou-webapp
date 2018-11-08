@@ -22,8 +22,7 @@ export class MessageComponent implements OnInit, OnDestroy {
   }
 
   onDone() {
-    this.message.new = false;
-    this.store.collection('messages').doc(this.message.id).set({...this.message, done: true}).then(() => {
+    this.store.collection('messages').doc(this.message.id).update({new: false, done: true}).then(() => {
       this.snackBar.open('Message marqué comme vue.', 'Fermer', {duration: 3000});
     }).catch(() => this.snackBar.open('Operation échouée, veuillez réessayer.', 'Fermer', {duration: 3000}));
   }
@@ -54,7 +53,7 @@ export class MessageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     if (this.viewed && this.message.new) {
-      this.store.collection('messages').doc(this.message.id).set({...this.message, new: false});
+      this.store.collection('messages').doc(this.message.id).update({new: false});
     }
   }
 }
