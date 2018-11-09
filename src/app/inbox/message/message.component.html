@@ -53,12 +53,13 @@
         </div>
         <div [innerHTML]="getHtml(message.body)"></div>
         <br>
-        <div *ngFor="let reply of message.replies">
+        <div *ngFor="let reply of replies">
           <mat-divider></mat-divider>
           <div fxLayout fxLayoutAlign="center center">
             <strong fxFlex="15">{{!reply.me? 'moi': message.name}}</strong>
             <div fxFlex fxFill class="reply" [innerHtml]="getHtml(reply.body)"></div>
             <p fxFlex="30" class="btn-col">{{getDate(reply.date)}}</p>
+            <mat-icon [matTooltip]="reply.delivered? 'Envoyé': ''" style="margin-left: 10px;" color="accent">{{reply.delivered? 'done_all': ''}}</mat-icon>
           </div>
         </div>
       </div>

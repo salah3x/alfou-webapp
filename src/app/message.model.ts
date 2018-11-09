@@ -7,7 +7,13 @@ export interface Message {
   date: Date;
   done: boolean;
   new: boolean;
-  replies?: {me: boolean, body: string, date: Date} [];
+}
+
+export interface Reply {
+  body: string;
+  date: Date;
+  me: boolean;
+  delivered: boolean;
 }
 
 export interface MessageWithId extends Message {

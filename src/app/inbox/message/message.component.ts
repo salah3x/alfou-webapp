@@ -3,7 +3,7 @@ import {AngularFirestore} from '@angular/fire/firestore';
 import {MatDialog, MatSnackBar} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
 import {NewMessageComponent} from '../new-message/new-message.component';
-import {MessageWithId} from '../../message.model';
+import {MessageWithId, Reply} from '../../message.model';
 
 @Component({
   selector: 'app-message',
@@ -15,6 +15,7 @@ export class MessageComponent implements OnInit, OnDestroy {
   opened = false;
   viewed = false;
   @Input() message: MessageWithId;
+  replies: Reply[];
 
   constructor(private store: AngularFirestore,
               private dialog: MatDialog,
@@ -22,6 +23,12 @@ export class MessageComponent implements OnInit, OnDestroy {
               private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
+    if (this.message.id) {
+      this.store.collection<Reply>(`/messages/${this.message.id}/replies`, ref =>
+      ref.orderBy('date', 'desc'))
+      .valueChanges()
+      .subscribe((value: Reply[]) => this.replies = value);
+    }
   }
 
   onDone() {

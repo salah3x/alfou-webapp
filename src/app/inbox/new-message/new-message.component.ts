@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef, MatSnackBar} from '@angular/material';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {Email, MessageWithId} from '../../message.model';
+import {Email, MessageWithId, Reply} from '../../message.model';
 
 @Component({
   selector: 'app-new-message',
@@ -23,11 +23,8 @@ export class NewMessageComponent implements OnInit {
   onSubmit(f: NgForm) {
     this.loading = true;
     if (this.message) {
-      if (!this.message.replies) {
-        this.message.replies = [];
-      }
-      this.message.replies.push({body: f.value.body, date: new Date(), me: true});
-      this.store.collection('/messages').doc(this.message.id).update({replies: this.message.replies}).then(() => {
+      const reply: Reply = {body: f.value.body, date: new Date(), me: true, delivered: false};
+      this.store.collection(`/messages/${this.message.id}/replies`).add(reply).then(() => {
         this.loading = false;
         this.snackBar.open('Réponse envoyé avec succés.', 'Fermer', {duration: 3000});
         this.dialogRef.close();
