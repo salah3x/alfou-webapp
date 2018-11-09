@@ -11,7 +11,7 @@ sgMail.setApiKey('SG.kkDGAhI8TiCa7OpG2WXdZg.PNhWilOfsFi-gzeVXFs3dsne2G6e4TmgL-gX
  * an ongoing conversation depending on the subject (if it contains the conversation number)
  */
 exports.onMessageArrived = functions.https.onRequest((request, response) => {
-  console.log('Message received' + request.body);
+  console.log('Message received', request.body);
   response.send('OK');
 });
 
@@ -20,7 +20,7 @@ exports.onMessageArrived = functions.https.onRequest((request, response) => {
  */
 exports.onNewEmail = functions.firestore.document('emails/{id}').onCreate((snapshot) => {
   const msg = {
-    from: 'info@async.zone',
+    from: {name: 'Alfou-sécurité', email:'info@async.zone'},
     to: snapshot.data().to,
     subject: snapshot.data().subject,
     html: snapshot.data().body.replace(/\n/g, '<br/>')
@@ -39,7 +39,7 @@ exports.onNewReply = functions.firestore.document('messages/{idM}/{repliesId}/{i
     return snapshot.ref.parent.parent.get()
       .then(value => {
         return {
-          from: 'info@async.zone',
+          from: {name: 'Alfou-sécurité', email:'info@async.zone'},
           to: value.data().from,
           subject: `[ID#${context.params.idM}]: ${value.data().subject}`,
           html: snapshot.data().body.replace(/\n/g, '<br/>')
