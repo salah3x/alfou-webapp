@@ -25,7 +25,7 @@ export class MessageComponent implements OnInit, OnDestroy {
   ngOnInit() {
     if (this.message.id) {
       this.store.collection<Reply>(`/messages/${this.message.id}/replies`, ref =>
-      ref.orderBy('date', 'desc'))
+      ref.orderBy('date', 'asc'))
       .valueChanges()
       .subscribe((value: Reply[]) => this.replies = value);
     }
