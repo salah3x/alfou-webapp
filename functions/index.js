@@ -2,6 +2,7 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 
+const Parser = require('@sendgrid/inbound-mail-parser');
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey('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');
 
@@ -11,7 +12,11 @@ sgMail.setApiKey('SG.kkDGAhI8TiCa7OpG2WXdZg.PNhWilOfsFi-gzeVXFs3dsne2G6e4TmgL-gX
  * an ongoing conversation depending on the subject (if it contains the conversation number)
  */
 exports.onMessageArrived = functions.https.onRequest((request, response) => {
-  console.log('Message received', request.body);
+  try{
+    console.log('Message received', new Parser({}, request.body).keyValues());
+  }catch(e) {
+    console.log(e);
+  }
   response.send('OK');
 });
 
