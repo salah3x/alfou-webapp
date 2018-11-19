@@ -36,7 +36,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 - Initialize your site (choose the dist/alfou-webapp folder): `firebase init`
 - Deploy your site: `firebase deploy [--only hosting | functions]`
 (This will build your project an deploy it plus deploying the cloud functions)
-- Visit [alfou-5b922.firebaseapp.com](http://alfou-5b922.firebaseapp.com/)
+- Visit [https://alfou.net/](https://alfou.net/)
 
 #
 
