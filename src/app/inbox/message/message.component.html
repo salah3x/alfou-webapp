@@ -59,7 +59,8 @@
             <strong fxFlex="15">{{reply.me? 'moi': message.name}}</strong>
             <div fxFlex fxFill class="reply" [innerHtml]="getHtml(reply.body)"></div>
             <p fxFlex="30" class="btn-col">{{getDate(reply.date)}}</p>
-            <mat-icon [matTooltip]="reply.delivered? 'Envoyé': ''" style="margin-left: 10px;" color="accent">{{reply.delivered? 'done_all': ''}}</mat-icon>
+            <mat-icon [matTooltip]="reply.delivered? 'Envoyé': ''" style="margin-left: 10px;" 
+            color="accent">{{reply.delivered? 'done': ''}}</mat-icon>
           </div>
         </div>
       </div>

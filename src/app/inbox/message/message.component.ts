@@ -57,7 +57,7 @@ export class MessageComponent implements OnInit, OnDestroy {
     } else {
       min = date.getMinutes();
     }
-    return date.getDay() + '/' + date.getMonth() + '/' +
+    return date.getDate() + '/' + ( date.getMonth()+1) + '/' +
       date.getFullYear() + ' ' + hour + ':' + min;
   }
 
