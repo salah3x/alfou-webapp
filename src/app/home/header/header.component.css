@@ -1,14 +1,14 @@
 .header {
     color: white;
-    background-image: url("/assets/header.jpg");
     height: 100vh;
     background-position: center;
     background-size: cover;
-    margin-bottom: 80px;
 }
 
 .menu {
     padding: 15px 15px 15px 0;
+    position: absolute;
+    width: 100%;
 }
 
 .menu a {

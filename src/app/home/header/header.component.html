@@ -1,6 +1,7 @@
-<div class="header">
+<div class="header" [style.background-image]="background" [@header]="background">
   <div class="menu" fxLayout fxLayoutAlign="space-between">
-    <a mat-button routerLink="/inbox">{{isAuthenticated ? 'Messagerie': ''}}</a>
+    <a *ngIf="isAuthenticated" mat-button routerLink="/inbox">Messagerie</a>
+    <a *ngIf="!isAuthenticated"></a>
     <button color="accent" mat-raised-button (click)="onSigninOrSignout()">{{isAuthenticated ? 'Se déconnecter': 'Se connecter'}}</button>
   </div>
   <div class="header" fxLayout="column" fxLayoutAlign="center center">
