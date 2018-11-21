@@ -14,10 +14,10 @@ import {ContactComponent} from './home/contact/contact.component';
 import {environment} from '../environments/environment';
 import {AuthGuard} from './Auth-guard.service';
 import {AngularFireAuthModule} from '@angular/fire/auth';
-import {SigninComponent} from './home/signin/signin.component';
+import {SigninComponent} from './home/header/signin/signin.component';
 import { HeaderComponent } from './home/header/header.component';
-import { NavComponent } from './home/nav/nav.component';
 import { MainComponent } from './home/main/main.component';
+import { FooterComponent } from './home/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +26,8 @@ import { MainComponent } from './home/main/main.component';
     ContactComponent,
     SigninComponent,
     HeaderComponent,
-    NavComponent,
-    MainComponent
+    MainComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

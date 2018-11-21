@@ -1,16 +1,13 @@
-<header>
-  <app-nav></app-nav>
-  <div class="tagline">
-      
-    <h1>ALFOU-SECURITE <br/>  A vôtre disposition.</h1>
-    <p>Alfou-sécurité est une societé bla ba bla .....</p>
-    <div>
-        <a href="#contact" mat-raised-button color="accent">Contactez-nous</a>
-        <a href="#more" mat-button>Plus d'information</a>
-    </div>
-   
+<div class="header">
+  <div class="menu" fxLayout fxLayoutAlign="space-between">
+    <a mat-button routerLink="/inbox">{{isAuthenticated ? 'Messagerie': ''}}</a>
+    <button color="accent" mat-raised-button (click)="onSigninOrSignout()">{{isAuthenticated ? 'Se déconnecter': 'Se connecter'}}</button>
   </div>
- 
-  <img src="/assets/header_2.png" />
- <div class="overlay"></div>
-</header>
+  <div class="header" fxLayout="column" fxLayoutAlign="center center">
+    <h1>Alfou-sécurité</h1>
+    <p>
+      Bla bla bla !!!!!!!!
+    </p>
+    <a mat-raised-button color="accent" href="#contact">Contactez-nous</a>
+  </div>
+</div>
