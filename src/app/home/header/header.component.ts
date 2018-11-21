@@ -12,10 +12,10 @@ import { trigger, transition, animate, style } from '@angular/animations';
     trigger('header', [
       transition('* <=> *', [
         animate(200, style({
-          'opacity': 0.3
+          'opacity': 0.5
         })),
         animate(200, style({
-          'opacity': 0.5
+          'opacity': 0.75
         })),
         animate(300)
       ])
@@ -54,7 +54,7 @@ export class HeaderComponent implements OnInit {
       }
       this.background = `url("/assets/header${this.next++}.jpg")`;
       this.changeBackground();
-    }, 6000);
+    }, 10000);
   }
 
 }
