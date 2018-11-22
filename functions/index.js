@@ -18,7 +18,7 @@ exports.onMessageArrived = functions.https.onRequest((request, response) => {
   const email = {};
   busboy.on('field', (fieldname, val) => {
     if (fieldname === 'from')
-      email.name = val.split('"')[1];
+      email.name = val.split('"')[1] || '';
     if (fieldname === 'subject')
       email.subject = val;
     if (fieldname === 'envelope')
@@ -27,6 +27,13 @@ exports.onMessageArrived = functions.https.onRequest((request, response) => {
       email.body = HTMLParser.parse(val).firstChild.toString();
   });
   busboy.on('finish', () => {
+    // Stop receiving emails from these fuckers
+    if (email.from === 'accounts@cpanel.net') {
+      console.log('Email dropped: ', email);
+      response.end();
+      return;
+    }
+    console.log('Email received: ', email);
     let p;
     if (email.subject.includes('[ID#')) {
       email.subject = ' ' + email.subject;
@@ -52,7 +59,7 @@ exports.onMessageArrived = functions.https.onRequest((request, response) => {
       response.end();
       return;
     }).catch(reason => {
-      console.error(reason);
+      console.error('Error ocuured while saving email: ', reason);
       response.end();
       return;
     });
