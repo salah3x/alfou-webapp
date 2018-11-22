@@ -1,0 +1,36 @@
+{
+  "indexes": [
+    {
+      "collectionId": "messages",
+      "state": "READY",
+      "fields": [
+        {
+          "fieldPath": "done",
+          "mode": "ASCENDING"
+        },
+        {
+          "fieldPath": "date",
+          "mode": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionId": "messages",
+      "state": "READY",
+      "fields": [
+        {
+          "fieldPath": "done",
+          "mode": "ASCENDING"
+        },
+        {
+          "fieldPath": "new",
+          "mode": "DESCENDING"
+        },
+        {
+          "fieldPath": "date",
+          "mode": "DESCENDING"
+        }
+      ]
+    }
+  ]
+}
