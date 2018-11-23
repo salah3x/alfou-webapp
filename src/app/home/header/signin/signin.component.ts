@@ -29,4 +29,8 @@ export class SigninComponent implements OnInit {
       this.loading = false;
     });
   }
+
+  onForget(email: string) {
+    this.auth.auth.sendPasswordResetEmail(email).then(() => this.snackbar.open('Vérifier vôtre email.', 'Fermer', {duration: 3000}));
+  }
 }
