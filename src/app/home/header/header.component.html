@@ -2,14 +2,13 @@
   <div class="menu" fxLayout fxLayoutAlign="space-between">
     <a *ngIf="isAuthenticated" mat-button routerLink="/inbox">Messagerie</a>
     <a *ngIf="!isAuthenticated"></a>
-    <button color="accent" mat-raised-button (click)="onSigninOrSignout()">{{isAuthenticated ? 'Se déconnecter': 'Se connecter'}}</button>
+    <button mat-raised-button (click)="onSigninOrSignout()">{{isAuthenticated ? 'Se déconnecter': 'Se connecter'}}</button>
   </div>
   <div class="header" fxLayout="column" fxLayoutAlign="center center">
     <img src="/favicon.ico">
     <img src="/assets/title.png">
-    <h2>
-      Bla bla bla !!!!!!!!
-    </h2>
-    <a mat-raised-button color="accent" href="#contact">Contactez-nous</a>
+    <h2>Besoin d'un service de <i>sécurité</i>, <i>néttoyage</i> ou <i>jardinage</i> ?</h2>
+    <h2>N'hésitez pas</h2>
+    <a mat-raised-button href="#contact" class="contact">CONTACTEZ-NOUS</a>
   </div>
 </div>

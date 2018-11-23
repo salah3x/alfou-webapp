@@ -25,7 +25,7 @@ export class SigninComponent implements OnInit {
       this.snackbar.open('Bonjour ' + value.user.email, 'Fermer', {duration: 3000});
       this.dialogRef.close();
     }).catch(reason => {
-      this.snackbar.open('Connexion échouée, vérifiez vos information.', 'Fermer', {duration: 3000});
+      this.snackbar.open('Connexion échouée, vérifiez vos informations.', 'Fermer', {duration: 3000});
       this.loading = false;
     });
   }

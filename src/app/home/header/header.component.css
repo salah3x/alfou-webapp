@@ -3,6 +3,7 @@
     height: 100vh;
     background-position: center;
     background-size: cover;
+    text-align: center;
 }
 
 .menu {
@@ -17,4 +18,20 @@
 
 img {
     width: 25vh;
+}
+
+h2 {
+    margin-bottom: 0px;
+}
+
+i {
+    font-weight: normal;
+}
+
+.contact {
+    font-size: 16px;
+    margin-top: 20px;
+    height: 45px;
+    display: inline-flex;
+    align-items: center; 
 }

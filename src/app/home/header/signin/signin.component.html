@@ -9,7 +9,7 @@
     </mat-form-field>
     <mat-form-field>
       <input [type]="hide ? 'password' : 'text'" matInput name="password" ngModel placeholder="Mot de passe" required>
-      <mat-icon (click)="hide = !hide" matSuffix>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <mat-icon style="cursor: pointer;" (click)="hide = !hide" matSuffix>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       <mat-error>Ce champ obligatoire</mat-error>
     </mat-form-field>
   </div>
@@ -18,7 +18,7 @@
     <button fxFlex="45" mat-dialog-close mat-raised-button>Annuler</button>
   </div>
   <br>
-  <button type="button" [disabled]="!f.controls['email']?.valid" mat-button (click)="onForget(f.controls['email']?.value)">
+  <button *ngIf="!loading" type="button" [disabled]="!f.controls['email']?.valid" mat-button (click)="onForget(f.controls['email']?.value)">
     Réinitialiser mot de passe
   </button>
   <mat-progress-spinner *ngIf="loading" [diameter]="30" mode="indeterminate"></mat-progress-spinner>
