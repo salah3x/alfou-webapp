@@ -2,6 +2,8 @@
 
 This project is an advertisement website and an email service for **Alfou-sécurité**, a security and cleaning service business based in Casablanca, Morocco.
 
+The `src` folder contains the actual webapp, while the `functions` folder contains the backend cloud functions and the the `designs` folder contains the photoshop projects for the company's logo, flyer, cover and business card.
+
 ### Development server (angular cli)
 
 - First clone the repo: `git clone git@github.com:salah3x/alfou-webapp.git` 
