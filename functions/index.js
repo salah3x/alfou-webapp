@@ -3,7 +3,8 @@ const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 
 const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey('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');
+const secret = require("./secret.json");
+sgMail.setApiKey(secret.API_KEY);
 
 const Busboy = require('busboy');
 const HTMLParser = require('node-html-parser');

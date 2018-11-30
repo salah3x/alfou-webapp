@@ -18,11 +18,17 @@ The `src` folder contains the actual webapp, while the `functions` folder contai
 
 ### Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/alfou-webapp` directory. Use the `--prod` flag for a production build.
 
 ### Deployment
 
-- First install firebase tools: `npm install -g firebase-tools`
+- First in the `functions` folder, add a `secret.json` file that contains the folowing : 
+```
+{
+    "SENDGRID_API_KEY": "[[SENDGRID](https://app.sendgrid.com/settings/api_keys)_API_KEY]"
+}
+```
+- Install firebase tools: `npm install -g firebase-tools`
 - Authenticate the cli and access Firebase projects: `firebase login`
 - Initialize your site (choose the dist/alfou-webapp folder): `firebase init`
 - Deploy the site and the backend functions to Firebase: `firebase deploy [--only hosting | functions]`
