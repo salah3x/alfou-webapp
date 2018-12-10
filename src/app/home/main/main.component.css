@@ -41,6 +41,14 @@ li {
     margin-top: 10px;
 }
 
+.section2 p {
+    text-align: center;
+}
+
 mat-divider {
     margin-bottom: 10px;
+}
+
+h3 {
+    text-align: center;
 }
