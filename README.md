@@ -25,7 +25,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 - First in the `functions` folder, add a `secret.json` file that contains the folowing : 
 ```
 {
-    "SENDGRID_API_KEY": "[YOUR_SENDGRID_API_KEY]"
+    "API_KEY": "[YOUR_SENDGRID_API_KEY]"
 }
 ```
 - Install firebase tools: `npm install -g firebase-tools`
