@@ -18,9 +18,9 @@
         </div>
         <div fxFlex="20%" class="btn-col">{{ getDate(message.date) }}</div>
         <div fxFlex="5%" class="btn-col" [ngSwitch]="message.service">
-          <mat-icon *ngSwitchCase="'Sécurité'" matTooltip="Sécurité" color="primary">security</mat-icon>
-          <mat-icon *ngSwitchCase="'Gardiennage'" matTooltip="Gardiennage" color="primary">local_florist</mat-icon>
-          <mat-icon *ngSwitchCase="'Nettoyage'" matTooltip="Nettoyage" color="primary">brush</mat-icon>
+          <mat-icon *ngSwitchCase="'Sécurité'" [matTooltip]="message.service" color="primary">security</mat-icon>
+          <mat-icon *ngSwitchCase="'Néttoyage'" [matTooltip]="message.service" color="primary">brush</mat-icon>
+          <mat-icon *ngSwitchCase="'Jardinage'" [matTooltip]="message.service" color="primary">local_florist</mat-icon>
         </div>
         <div fxFlex="5%" class="btn-col">
           <mat-icon [matTooltip]="message.new? 'Nouveau': ''" color="accent">{{message.done ? 'done_all': message.new ? 'new_releases': ''}}</mat-icon>

@@ -19,8 +19,8 @@ export class ContactComponent implements OnInit {
 
   ngOnInit() {
     this.options.push('Sécurité');
-    this.options.push('Gardiennage');
-    this.options.push('Nettoyage');
+    this.options.push('Néttoyage');
+    this.options.push('Jardinage');
   }
 
   onSubmit(f: NgForm) {
@@ -29,7 +29,7 @@ export class ContactComponent implements OnInit {
       name: f.value.name,
       from: f.value.email,
       subject: f.value.subject,
-      service: f.value.service,
+      service: f.value.service || '',
       body: f.value.comment,
       new: true,
       date: new Date(),
