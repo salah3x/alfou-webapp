@@ -5,6 +5,9 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {FormsModule} from '@angular/forms';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
+import { RecaptchaModule } from 'ng-recaptcha';
+import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
+import { RECAPTCHA_LANGUAGE } from 'ng-recaptcha';
 
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
@@ -38,9 +41,17 @@ import { FooterComponent } from './home/footer/footer.component';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    RecaptchaModule,
+    RecaptchaFormsModule
   ],
-  providers: [AuthGuard],
+  providers: [
+    {
+      provide: RECAPTCHA_LANGUAGE,
+      useValue: 'fr'
+    },
+    AuthGuard
+  ],
   entryComponents: [SigninComponent],
   bootstrap: [AppComponent]
 })

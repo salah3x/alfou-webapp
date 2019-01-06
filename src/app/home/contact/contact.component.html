@@ -47,7 +47,15 @@
         </div>
 
         <div fxLayout fxLayoutAlign="center">
-            <button fxFlex="50" fxFlex.lt-sm="100" [disabled]="!f.valid" color="primary" mat-raised-button type="submit">Envoyer</button>
+          <re-captcha #captchaControl="ngModel"
+              siteKey="6LcBTIcUAAAAAD0--s0ykYDslCc8Xvo9231QzbHl"
+              ngModel required name="captcha">
+            </re-captcha>
+        </div>
+        <div fxLayout fxLayoutAlign="center">
+            <button fxFlex="50" fxFlex.lt-sm="100" 
+              [disabled]="!f.valid || !captchaControl.valid" 
+              color="primary" mat-raised-button type="submit">Envoyer</button>
         </div>
       </form>
     </mat-card-content>
