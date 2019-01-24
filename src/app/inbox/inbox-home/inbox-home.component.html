@@ -1,4 +1,5 @@
 <div class="container" fxLayoutGap="5px" fxFlex>
   <mat-progress-spinner *ngIf="loading" [diameter]="30" mode="indeterminate"></mat-progress-spinner>
   <app-message *ngFor="let message of messages" [message]="message"></app-message>
+  <div class="no-message" *ngIf="messages && !messages.length">Aucun message</div>
 </div>
