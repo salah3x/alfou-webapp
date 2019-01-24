@@ -67,7 +67,12 @@ export class MessageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     if (this.viewed && this.message.new) {
-      this.store.collection('messages').doc(this.message.id).update({new: false});
+      const messageRef = this.store.collection('messages').doc(this.message.id);
+      messageRef.get().toPromise().then(docSnapshot => {
+        if (docSnapshot.exists) {
+          messageRef.update({new: false});
+        }
+      });
     }
   }
 }
