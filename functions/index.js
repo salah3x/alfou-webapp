@@ -2,6 +2,9 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 
+const firestore = admin.firestore();
+firestore.settings({timestampsInSnapshots: true})
+
 const sgMail = require('@sendgrid/mail');
 const secret = require("./secret.json");
 sgMail.setApiKey(secret.API_KEY);
@@ -39,13 +42,13 @@ exports.onMessageArrived = functions.https.onRequest((request, response) => {
     if (email.subject.includes('[ID#')) {
       email.subject = ' ' + email.subject;
       const id = email.subject.split('[ID#')[1].split(']')[0];
-      p = admin.firestore().collection(`/messages/${id}/replies`).add({
+      p = firestore.collection(`/messages/${id}/replies`).add({
         body: email.body,
         date: new Date(),
         me: false,
-      }).then(() => admin.firestore().collection('/messages').doc(id).update({new: true, done: false}));
+      }).then(() => firestore.collection('/messages').doc(id).update({new: true, done: false}));
     } else {
-      p = admin.firestore().collection('/messages').add({
+      p = firestore.collection('/messages').add({
         name: email.name,
         from: email.from,
         subject: email.subject,
@@ -80,7 +83,7 @@ exports.onNewEmail = functions.firestore.document('emails/{id}').onCreate((snaps
   };
   return sgMail.send(msg)
     .then(() => console.log('Email sent to ' + msg.to))
-    .then(() => admin.firestore().collection('/emails').doc(snapshot.id).update({delivered: true}))
+    .then(() => firestore.doc(`/emails/${snapshot.id}`).update({delivered: true}))
     .catch(console.error);
 });
 
@@ -105,9 +108,7 @@ exports.onNewReply = functions.firestore.document('messages/{idM}/{repliesId}/{i
         console.log(`Reply sent to ${result[1].to}`);
         return result[0];
       })
-      .then(() => admin.firestore()
-        .collection(`/messages/${context.params.idM}/replies`)
-        .doc(snapshot.id)
+      .then(() => firestore.doc(`/messages/${context.params.idM}/replies/${snapshot.id}`)
         .update({delivered: true}))
       .catch(error => console.error(error.response));
   }
