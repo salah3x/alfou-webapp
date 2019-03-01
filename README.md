@@ -1,4 +1,4 @@
-# Alfou Webapp
+# Alfou Webapp [![Build Status](https://travis-ci.org/salah3x/alfou-webapp.svg?branch=master)](https://travis-ci.org/salah3x/alfou-webapp)
 
 This project is an advertisement website and an email service for **Alfou-sécurité**, a security and cleaning service business based in Casablanca, Morocco.
 
