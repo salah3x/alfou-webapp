@@ -8,8 +8,7 @@ branches:
 
 before_script:
   - touch ./functions/secret.json
-  - echo '{"API_KEY" : "$SENDGRID_API_KEY"}' > ./functions/secret.json
-  - cat ./functions/secret.json
+  - echo '{"API_KEY" : "'$SENDGRID_API_KEY'"}' > ./functions/secret.json
   - npm install -g firebase-tools
   - npm install
   - npm --prefix ./functions install
