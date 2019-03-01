@@ -7,13 +7,11 @@ branches:
     - master
 
 before_script:
+  - echo {\"API_KEY\" : \"$SENDGRID_API_KEY\"} > .functions/secret.json
+  - cat functions/secret.json
   - npm install -g firebase-tools
-
-script:
   - npm install
   - npm --prefix ./functions install
-  - echo {\"API_KEY\" : \"$SENDGRID_API_KEY\"} > functions/secret.json
-  - cat functions/secret.json
 
-after_success:
+script:
   - firebase deploy --token $FIREBASE_TOKEN
