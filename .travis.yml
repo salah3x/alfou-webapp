@@ -2,7 +2,10 @@ language: node_js
 node_js:
   - "10"
 
-cache: npm
+cache:
+  directories:
+    - node_modules
+    - functions/node_modules
 
 branches:
   only:
