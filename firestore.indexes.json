@@ -1,36 +1,37 @@
 {
   "indexes": [
     {
-      "collectionId": "messages",
-      "state": "READY",
+      "collectionGroup": "messages",
+      "queryScope": "COLLECTION",
       "fields": [
         {
           "fieldPath": "done",
-          "mode": "ASCENDING"
+          "order": "ASCENDING"
         },
         {
           "fieldPath": "date",
-          "mode": "DESCENDING"
+          "order": "DESCENDING"
         }
       ]
     },
     {
-      "collectionId": "messages",
-      "state": "READY",
+      "collectionGroup": "messages",
+      "queryScope": "COLLECTION",
       "fields": [
         {
           "fieldPath": "done",
-          "mode": "ASCENDING"
+          "order": "ASCENDING"
         },
         {
           "fieldPath": "new",
-          "mode": "DESCENDING"
+          "order": "DESCENDING"
         },
         {
           "fieldPath": "date",
-          "mode": "DESCENDING"
+          "order": "DESCENDING"
         }
       ]
     }
-  ]
+  ],
+  "fieldOverrides": []
 }
