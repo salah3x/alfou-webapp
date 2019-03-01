@@ -12,6 +12,8 @@ before_script:
 script:
   - npm install
   - npm --prefix ./functions install
+  - echo {\"API_KEY\" : \"$SENDGRID_API_KEY\"} > functions/secret.json
+  - cat functions/secret.json
 
 after_success:
   - firebase deploy --token $FIREBASE_TOKEN
